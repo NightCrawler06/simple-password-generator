@@ -5,7 +5,6 @@ import string
 
 
 def generate_passwords(first_name, last_name, dob, color):
-    # Password generation logic
     base_passwords = [
         first_name + last_name,
         last_name + first_name,
@@ -30,16 +29,14 @@ def generate_passwords(first_name, last_name, dob, color):
 
 
 def display_passwords(passwords_frame, passwords):
-    # Clear previous passwords
     for widget in passwords_frame.winfo_children():
         widget.destroy()
 
     for pwd in passwords:
-        # Create an Entry widget for each password
         pwd_entry = tk.Entry(passwords_frame, font=("Arial", 10), fg="#1a1a1a", bg="#ffcc00",
                              width=35, relief="flat", justify="center")
-        pwd_entry.insert(0, pwd)  # Insert the password in the entry
-        pwd_entry.config(state="readonly")  # Make the entry read-only to prevent editing
+        pwd_entry.insert(0, pwd)
+        pwd_entry.config(state="readonly")
         pwd_entry.pack(anchor="center", padx=5, pady=2)
 
 
@@ -57,24 +54,19 @@ def main():
     root.geometry("950x500")
     root.configure(bg="#1a1a1a")
 
-    # Header Section
     header = tk.Label(root, text="Password Generator", font=("Arial", 20, "bold"), fg="#ffcc00", bg="#1a1a1a")
     header.pack(side=tk.TOP, pady=(20, 10))
 
-    # Main Container Frame
     main_frame = tk.Frame(root, bg="#333333", bd=2, relief="ridge")
     main_frame.pack(padx=20, pady=10, fill="both", expand=True)
 
-    # Configure grid layout in main_frame
-    main_frame.columnconfigure(0, weight=1, uniform="equal")  # Set uniform to make columns equal
+    main_frame.columnconfigure(0, weight=1, uniform="equal")
     main_frame.columnconfigure(1, weight=1, uniform="equal")
     main_frame.rowconfigure(0, weight=1)
 
-    # Input Section
     input_frame = tk.Frame(main_frame, bg="#1a1a1a", padx=20, pady=20, bd=1, relief="solid")
     input_frame.grid(row=0, column=0, sticky="nswe", padx=(10, 5), pady=10)
 
-    # Labels and Entry Fields for Inputs
     labels = ["First Name", "Last Name", "Date of Birth (DDMMYY)", "Favorite Color"]
     entries = []
 
@@ -87,7 +79,6 @@ def main():
         entry.grid(row=i, column=1, padx=10, pady=8, ipadx=5, ipady=5)
         entries.append(entry)
 
-    # Generate Button with hover effect
     generate_button = tk.Button(input_frame, text="Generate Passwords", font=("Arial", 11, "bold"),
                                 fg="#1a1a1a", bg="#ffcc00", relief="flat", cursor="hand2",
                                 command=lambda: display_passwords(passwords_frame, generate_passwords(
@@ -97,7 +88,6 @@ def main():
     generate_button.bind("<Enter>", on_hover)
     generate_button.bind("<Leave>", on_leave)
 
-    # Passwords Display Section
     passwords_frame = tk.Frame(main_frame, bg="#333333", bd=1, relief="solid", padx=10, pady=10)
     passwords_frame.grid(row=0, column=1, sticky="nswe", padx=(5, 10), pady=10)
 
@@ -105,7 +95,6 @@ def main():
                               fg="#ffcc00", bg="#333333", pady=5)
     password_label.pack(anchor="center", padx=10, pady=(10, 5))
 
-    # Footer Section
     footer = tk.Label(root, text="Thank you for using the Password Generator", font=("Arial", 10),
                       fg="#ffcc00", bg="#1a1a1a")
     footer.pack(side=tk.BOTTOM, pady=(10, 20))
