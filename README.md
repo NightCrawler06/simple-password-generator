@@ -20,8 +20,8 @@ A secure and user-friendly password generator application built with Python and 
 
 1. Clone the repository:
 ```bash
-git clone https://github.com/yourusername/semproj.git
-cd semproj
+git clone https://github.com/yourusername/simple-password-generator.git
+cd simple-password-generator
 ```
 
 2. Run the application:
